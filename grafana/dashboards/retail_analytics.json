@@ -1,1 +1,452 @@
-{}
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": null,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "retail-postgres"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 0,
+        "y": 0
+      },
+      "id": 1,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "11.1.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "retail-postgres"
+          },
+          "format": "table",
+          "rawSql": "SELECT SUM(s.total_amount) AS total_revenue\nFROM sales_fact s\nJOIN dim_store st ON s.store_id = st.store_id\nJOIN dim_product p ON s.product_id = p.product_id\nWHERE st.region IN (${region:sqlstring}) AND p.category IN (${category:sqlstring});",
+          "refId": "A"
+        }
+      ],
+      "title": "Total Revenue",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "retail-postgres"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 6,
+        "y": 0
+      },
+      "id": 2,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "11.1.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "retail-postgres"
+          },
+          "format": "table",
+          "rawSql": "SELECT SUM(s.profit) AS total_profit\nFROM sales_fact s\nJOIN dim_store st ON s.store_id = st.store_id\nJOIN dim_product p ON s.product_id = p.product_id\nWHERE st.region IN (${region:sqlstring}) AND p.category IN (${category:sqlstring});",
+          "refId": "A"
+        }
+      ],
+      "title": "Total Profit",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "retail-postgres"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 12,
+        "y": 0
+      },
+      "id": 3,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "11.1.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "retail-postgres"
+          },
+          "format": "table",
+          "rawSql": "SELECT AVG(s.total_amount) AS average_order_value\nFROM sales_fact s\nJOIN dim_store st ON s.store_id = st.store_id\nJOIN dim_product p ON s.product_id = p.product_id\nWHERE st.region IN (${region:sqlstring}) AND p.category IN (${category:sqlstring});",
+          "refId": "A"
+        }
+      ],
+      "title": "Average Order Value",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "retail-postgres"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 18,
+        "y": 0
+      },
+      "id": 4,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "11.1.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "retail-postgres"
+          },
+          "format": "table",
+          "rawSql": "SELECT COUNT(DISTINCT s.customer_id) AS active_customers\nFROM sales_fact s\nJOIN dim_store st ON s.store_id = st.store_id\nJOIN dim_product p ON s.product_id = p.product_id\nWHERE st.region IN (${region:sqlstring}) AND p.category IN (${category:sqlstring});",
+          "refId": "A"
+        }
+      ],
+      "title": "Active Customers",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "retail-postgres"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "drawStyle": "line",
+            "fillOpacity": 20,
+            "lineInterpolation": "smooth",
+            "lineWidth": 2,
+            "pointSize": 5,
+            "showPoints": "never"
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 14,
+        "x": 0,
+        "y": 4
+      },
+      "id": 5,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "retail-postgres"
+          },
+          "format": "time_series",
+          "rawSql": "SELECT\n  DATE_TRUNC('month', s.sale_date) AS time,\n  st.region AS metric,\n  SUM(s.total_amount) AS value\nFROM sales_fact s\nJOIN dim_store st ON s.store_id = st.store_id\nJOIN dim_product p ON s.product_id = p.product_id\nWHERE st.region IN (${region:sqlstring}) AND p.category IN (${category:sqlstring})\nGROUP BY 1, 2\nORDER BY 1, 2;",
+          "refId": "A"
+        }
+      ],
+      "title": "Monthly Revenue by Region",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "retail-postgres"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 10,
+        "x": 14,
+        "y": 4
+      },
+      "id": 6,
+      "options": {
+        "showHeader": true
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "retail-postgres"
+          },
+          "format": "table",
+          "rawSql": "SELECT\n  p.product_name,\n  SUM(s.total_amount) AS revenue\nFROM sales_fact s\nJOIN dim_store st ON s.store_id = st.store_id\nJOIN dim_product p ON s.product_id = p.product_id\nWHERE st.region IN (${region:sqlstring}) AND p.category IN (${category:sqlstring})\nGROUP BY p.product_name\nORDER BY revenue DESC\nLIMIT 10;",
+          "refId": "A"
+        }
+      ],
+      "title": "Top Products by Revenue",
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "retail-postgres"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 13
+      },
+      "id": 7,
+      "options": {
+        "showHeader": true
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "retail-postgres"
+          },
+          "format": "table",
+          "rawSql": "SELECT\n  st.store_name,\n  st.region,\n  SUM(s.total_amount) AS revenue,\n  SUM(s.profit) AS profit,\n  ROUND((SUM(s.profit) / NULLIF(SUM(s.total_amount), 0))::numeric * 100, 2) AS profit_margin_pct\nFROM sales_fact s\nJOIN dim_store st ON s.store_id = st.store_id\nJOIN dim_product p ON s.product_id = p.product_id\nWHERE st.region IN (${region:sqlstring}) AND p.category IN (${category:sqlstring})\nGROUP BY st.store_name, st.region\nORDER BY profit DESC;",
+          "refId": "A"
+        }
+      ],
+      "title": "Store Profitability",
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "retail-postgres"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 13
+      },
+      "id": 8,
+      "options": {
+        "showHeader": true
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "retail-postgres"
+          },
+          "format": "table",
+          "rawSql": "WITH customer_metrics AS (\n  SELECT\n    s.customer_id,\n    (SELECT MAX(sale_date) FROM sales_fact) - MAX(s.sale_date) AS recency_days,\n    COUNT(*) AS frequency,\n    SUM(s.total_amount) AS monetary\n  FROM sales_fact s\n  JOIN dim_store st ON s.store_id = st.store_id\n  JOIN dim_product p ON s.product_id = p.product_id\n  WHERE st.region IN (${region:sqlstring}) AND p.category IN (${category:sqlstring})\n  GROUP BY s.customer_id\n), rfm_scores AS (\n  SELECT\n    customer_id,\n    recency_days,\n    frequency,\n    monetary,\n    NTILE(5) OVER (ORDER BY recency_days DESC) AS r_score,\n    NTILE(5) OVER (ORDER BY frequency ASC) AS f_score,\n    NTILE(5) OVER (ORDER BY monetary ASC) AS m_score\n  FROM customer_metrics\n)\nSELECT\n  c.customer_id,\n  c.first_name || ' ' || c.last_name AS customer_name,\n  r.recency_days,\n  r.frequency,\n  r.monetary,\n  CASE\n    WHEN r.r_score >= 4 AND r.f_score >= 4 AND r.m_score >= 4 THEN 'Champion'\n    WHEN r.r_score >= 3 AND r.f_score >= 3 AND r.m_score >= 3 THEN 'Loyal'\n    WHEN r.r_score >= 4 AND r.f_score <= 2 AND r.m_score <= 2 THEN 'New'\n    WHEN r.r_score <= 2 AND r.f_score >= 3 AND r.m_score >= 3 THEN 'At Risk'\n    ELSE 'Others'\n  END AS segment\nFROM rfm_scores r\nJOIN dim_customer c ON r.customer_id = c.customer_id\nORDER BY r.monetary DESC\nLIMIT 25;",
+          "refId": "A"
+        }
+      ],
+      "title": "Top Customer Segments",
+      "type": "table"
+    }
+  ],
+  "refresh": "30s",
+  "schemaVersion": 39,
+  "tags": [
+    "retail",
+    "postgres",
+    "sql"
+  ],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": true,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": {
+          "type": "postgres",
+          "uid": "retail-postgres"
+        },
+        "definition": "SELECT DISTINCT region AS __value, region AS __text FROM dim_store ORDER BY region;",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Region",
+        "multi": true,
+        "name": "region",
+        "options": [],
+        "query": "SELECT DISTINCT region AS __value, region AS __text FROM dim_store ORDER BY region;",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": {
+          "type": "postgres",
+          "uid": "retail-postgres"
+        },
+        "definition": "SELECT DISTINCT category AS __value, category AS __text FROM dim_product ORDER BY category;",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Category",
+        "multi": true,
+        "name": "category",
+        "options": [],
+        "query": "SELECT DISTINCT category AS __value, category AS __text FROM dim_product ORDER BY category;",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "type": "query"
+      }
+    ]
+  },
+  "time": {
+    "from": "2023-01-01T00:00:00.000Z",
+    "to": "2024-12-31T23:59:59.000Z"
+  },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "Retail Analytics",
+  "uid": "retail-analytics",
+  "version": 1,
+  "weekStart": ""
+}
+
