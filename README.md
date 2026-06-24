@@ -157,7 +157,7 @@ Executive business dashboard featuring:
 * Top Products Analysis
 * Store Profitability Analysis
 * Customer Segmentation Insights
-## Power BI Dashboard
+
 
 ![Power BI Dashboard](docs/RETAIL_ANALYTICS_POWERBI.png)
 
@@ -171,8 +171,7 @@ Operational dashboard featuring:
 * Store Performance
 * Customer Insights
 * Regional Analysis
-* 
-* ## Grafana Dashboard
+
 
 ![Grafana Dashboard](docs/GRAFANA_DASHBOARD.png)
 
