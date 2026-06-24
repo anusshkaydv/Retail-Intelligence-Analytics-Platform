@@ -1,0 +1,11 @@
+store_id,store_name,city,region,manager_name
+1,Store_1,Hyderabad,North,Manager_1
+2,Store_2,Pune,South,Manager_2
+3,Store_3,Delhi,East,Manager_3
+4,Store_4,Hyderabad,West,Manager_4
+5,Store_5,Delhi,North,Manager_5
+6,Store_6,Bengaluru,South,Manager_6
+7,Store_7,Bengaluru,East,Manager_7
+8,Store_8,Bengaluru,West,Manager_8
+9,Store_9,Delhi,North,Manager_9
+10,Store_10,Hyderabad,South,Manager_10
