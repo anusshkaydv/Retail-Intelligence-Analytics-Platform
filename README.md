@@ -203,6 +203,7 @@ Retail-Intelligence-Analytics-Platform/
 
 ![ER Diagram](docs/ER_DIAGRAM.png)
 
+---
 ## HTML Dashboard (Web Version)
 ![PowerBi Style Dashboard](docs/powerbi_style_dashboard.png)
 
