@@ -160,7 +160,7 @@ Executive business dashboard featuring:
 
 
 ![Power BI Dashboard](docs/RETAIL_ANALYTICS_POWERBI.png)
-## 🎥 Demo Video
+### 🎥 Demo Video
 👉 Watch the dashboard demo here:  
 https://drive.google.com/file/d/1cvI6ZroxMhbyZwFf3_O86nWXLEHCJiXY/view?usp=sharing
 ### Grafana Dashboard
