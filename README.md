@@ -175,7 +175,7 @@ Operational dashboard featuring:
 * Regional Analysis
 
 
-![Grafana Dashboard](docs/GRAFANA_DASHBOARD.png)
+![Grafana Dashboard](docs/Screenshot%202026-06-24%20163304.png)
 
 ---
 
