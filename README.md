@@ -191,15 +191,17 @@ Retail-Intelligence-Analytics-Platform/
 
 ---
 
-## Dashboard Preview
+## Power BI Dashboard
 
-### Power BI Dashboard
+![Power BI Dashboard](docs/RETAIL_ANALYTICS_POWERBI.png)
 
-(Add Screenshot Here)
+## Grafana Dashboard
 
-### Grafana Dashboard
+![Grafana Dashboard](docs/GRAFANA_DASHBOARD.png)
 
-(Add Screenshot Here)
+## ER Diagram
+
+![ER Diagram](docs/ER_DIAGRAM.png)
 
 ---
 
